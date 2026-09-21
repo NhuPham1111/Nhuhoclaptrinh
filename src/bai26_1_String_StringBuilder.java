@@ -1,4 +1,4 @@
-public class bai26_String_StringBuilder {
+public class bai26_1_String_StringBuilder {
     public static void main(String[] args) {
         String s = "Nhu xinh ne" +
                 "\nNhu xinh cham chi lam nha";
@@ -30,12 +30,17 @@ public class bai26_String_StringBuilder {
         * 11/trim()                             => xoa toan bo khoan trang o dau va cuoi cua chuoi
         * 12/Meo xoa toan bo khoang trang cuoi:
         * cach 1: bieu thuc chinh quy (regular expression)
-        * cach 2: dung \s+$ de xoa tca khoang trang o cuoi chuoi
+        * dung \s+$ de xoa tca khoang trang o cuoi chuoi
+        * dung ^ để xóa tca khoảng trắng ở đầu chuỗi
+        *
         * Trong regular expression
         *   \s+ dai dien cho 1 hoac nhieu khoang trang lien tiep
         *   $   dai dien cho ket thuc dong
         *   \s+$    dai dien cho 1 hoac nhieu khoang trnag lien tiep truoc ket thuc dong
         *   \ la ki tu dac biet nen trong java can them 1 dau \ truoc no
+        *   ^ đại điện cho đầu chuỗi
+        *
+        * cach 2: dung vong lap while();
         * */
         System.out.println("\nTest method 1->4: append, insert, delete, length");
         sb.append("Xin chao, ");
@@ -90,15 +95,34 @@ public class bai26_String_StringBuilder {
         String s19 = s18.trim();
         System.out.println("s19 la s18 sau khi xoa khoan trang: "+s19);
 
-        System.out.println("\nTest method 12:  xoa toan bo khoang trang o cuoi \ncach 1: bang regular expression");
+        System.out.println("\nTest method 12: XÓA TOÀN BỘ KHOẢNG TRẮNG Ở CUỐI \ncach 1: bang regular expression \\s+$");
+        //cach 1: xoa khoan trang cuoi chuoi
         String s20 = s18.replaceAll("\\s+$","");
-        System.out.println("chuoi s18: "+ s18 + "\ns18 co length = "+ s18.length());
-        System.out.println("chuoi s20 sau khi xoa khoang trang cuoi: "+ s20 + "\ns20 co length = "+ s20.length());
-        System.out.println("\ncach 2: dung vong lap");
-        System.out.println("chuoi s18: "+ s18);
+        System.out.println("s18: "+ s18 + "\ns18 co length = "+ s18.length());
+        System.out.println("s20: "+ s20 + "\ns20 co length = "+ s20.length());
+        //cach 2: xoa khoan trang cuoi chuoi
+        System.out.println("\nCách 2 dùng while loop");
+        String s21="            Như xinh đi học        ";
+        System.out.println("s21: "+ s21);
+        while (s21.endsWith(" ")){
+            s21 = s21.substring(0,s21.length()-1);
 
+        }
+        System.out.println("s20 sau khi xóa khoảng trắng cuối: \ns21: "+s21);
 
-
-
+        System.out.println("\nTest method 12: XÓA TOÀN BỘ KHOẢNG TRẮNG Ở ĐẦU \ncach 1: bang regular expression ^\\s+");
+        //cach 1: xoa khoan trang dau chuoi
+        String s23 = "          Nhu ne        ";
+        String s24 = s23.replaceFirst("^\\s+"," ");
+        System.out.println("s23: "+s23);
+        System.out.println("s24"+s24);
+        //cach 2: xoa khoan trang dau chuoi while loop
+        System.out.println("\nCách 2 dùng while loop");
+        String s25 = "       nhu hom nay xinh qua         ";
+        System.out.println("s25: "+s25);
+        while (s25.startsWith(" ")){
+            s25 = s25.substring(1);
+        }
+        System.out.println("s25: "+s25);
     }
 }
