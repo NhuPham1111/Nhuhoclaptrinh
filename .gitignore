@@ -1,0 +1,30 @@
+# ========================================
+# IntelliJ IDEA
+# ========================================
+
+# Cấu hình riêng của IntelliJ IDEA
+.idea/
+
+# File cấu hình module của IntelliJ
+*.iml
+
+
+# ========================================
+# Java compiled files
+# ========================================
+
+# Thư mục chứa file Java đã compile
+out/
+
+# File Java đã compile
+*.class
+
+
+# ========================================
+# Build
+# ========================================
+
+# Thư mục build của Maven
+target/
+
+
