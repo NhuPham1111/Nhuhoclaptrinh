@@ -1,18 +1,6 @@
-public class bai26_2_String_methods {
+public class bai26_2_String_methods_p1 {
     public static void main(String[] args) {
-/*
-* 1.indexOf : Kiểm tra vi trí xuất hiện đậu tiên của ký tự/chuỗi (return -1 nếu ko tìm thấy)
-* 2.LastIndexOf: -> vị trí index xuất hiện cuối cùng của ký tự/ chuỗi (return -1 nếu ko tìm thấy)
-* 3.contains: Ktra chuỗi con
-* 4.substring: Lấy 1 chuỗi con (substring) từ 1 chuỗi dài hơn ; substring(int beginIndex); substring(int beginIndex, int endIndex);
-* 5.repalce("str old","str new") : thay thế chuỗi cũ bằng chuỗi mới
-* 6.replaceFirst ("str old","str new"): thay thế chuỗi old đầu tiên tìm thấy bằng chuõi new
-* 7.trim() : xóa toàn bộ khoảng trắng ở đầu và cuối
-* Cách 1: biểu thức chính quy (bai26_1)
-* Cách 2: dùng vòng lặp while (bai26_1)
-* */
-
-//Buổi 2
+        //Buổi 2
         //indexOf
         System.out.println("\n1.test indexOf");
         String s7 = "tôi đi tìm tôi";
