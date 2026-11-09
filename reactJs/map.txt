@@ -1,0 +1,26 @@
+1. Phương thức map()
+map() là phương thức tạo ra 1 mảng mới từ mảng ban đầu, bằng cách áp dụng 1 hàm callback cho mỗi phần tử của mảng đó.
+Điều này giúp ta chuyển đổi, xử lý dữ liệu 1 cách dễ dàng mà ko làm thay đổi mảng gốc
+
+let newArray = array.map(
+    function(curentValue, index, arr){
+        //return new value cho phần tử mảng mới
+    }.thisArg
+)
+
+thisArg giúp gán ngữ cảnh cho callback: cho phép bên trong callback của map() 
+Truy cập trực tiếp vào thuộc tính, phuong thức của đối tượng truyền vào.
+- Không được sd Arrow function nếu dùng callback thisArg (vì arrow ffunction nó có this của riêng nó)
+- Liên quan đến kiến thức đối tượng oop;
+Vd:
+const config ={
+    calculate(value){
+        return value*3;
+    },
+};
+
+const M2 = [1,2,3];
+const kq = M2.map(function(vl){
+    return this.calculate(vl);
+},config); // Truyền config làm thisArg
+console.log(kq) // [3,6,9]

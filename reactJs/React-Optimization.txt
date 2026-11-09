@@ -1,0 +1,110 @@
+-- Tối ưu hóa code - section component
+Các section có cấu trúc lặp lại, ta có thể sd JSX để tái sử dụng component
+Vd: tạo component section chung
+export default function Section({ title, children, id }) {
+  return (
+    <section id={id}>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+Tuy nhiên, nếu cứ mỗi lần tryền thêm thuộc tính : id, className,... ta lại phải truyển thủ công -> mất thời gian.
+
+--Cách xử lý: Spread Operator: ...props
+Forwarding Props trong React, cách sử dụng ...props sẽ tự động trãi các thuộc tính này và áp dụng
+Vd:
+export default function Section({ title, children, ...props }) {
+  return (
+    <section {...props}>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}
+Ví dụ cho component TabButton.jsx
+export default function TabButton({ children, isSelected, ...props }) {
+  return (
+    <li>
+      <button className={isSelected ? "active" : undefined} {...props}>
+        {children}
+      </button>
+    </li>
+  );
+}
+
+Lúc này bên App.jsx muốn sd ta ko cần gọi onSelect nữa, mà có thể dùng trực tiếp onClick
+<menu>
+    <TabButton
+        isSelected={selectedTopic==="components"}
+        onClick={()=>{handleSelect('components')}}>
+        Components
+    </TabButton>
+    <TabButton isSelected={selectedTopic==="jsx"} onClick={()=>{handleSelect('jsx')}}>JSX</TabButton>
+    <TabButton isSelected={selectedTopic==="props"} onClick={()=>{handleSelect('props')}}>Props</TabButton>
+    <TabButton isSelected={selectedTopic==="state"} onClick={()=>{handleSelect('state')}}>State</TabButton>
+</menu>
+{tabContent}
+
+-- Tối ưu tabs Menu: (nếu như chỉ sd 1 lần ko tái sử dụng thì bỏ qua)
+// Tabs.jsx
+export default function Tabs({ button, children }) {
+  return (
+    <>
+      <menu>{button}</menu>
+      {children}
+    </>
+  );
+}
+
+//App.jsx
+<Tabs button={
+<>
+<TabButton
+  isSelected={selectedTopic==="components"}
+  onClick={()=>{handleSelect('components')}}>
+  Components
+</TabButton>
+<TabButton isSelected={selectedTopic==="jsx"} onClick={()=>{handleSelect('jsx')}}>JSX</TabButton>
+<TabButton isSelected={selectedTopic==="props"} onClick={()=>{handleSelect('props')}}>Props</TabButton>
+<TabButton isSelected={selectedTopic==="state"} onClick={()=>{handleSelect('state')}}>State</TabButton>
+</>            
+}>
+{tabContent} //children
+</Tabs>
+
+-- Tiếp tục tối ưu Tabs menu thay vì fix cứng thẻ <menu>
+- Trong JSX, nếu 1 tag bắt đầu bằng chữ thườngm(vd: <div></div>, <span></span>). 
+    -> React sẽ hiểu là 1 thẻ HTML gốc
+- Nếu 1 tag bắt đầu bằng chữ hoa (vd: <MyComponent/>). 
+    -> React sẽ hiểu là 1 component React.
+
+- Để khắc phục:
+
+  // Cách 1: dùng biến trung gian
+  export default function Tabs({ button, children, buttonContainer }) {
+  const ButtonContainer = buttonContainer;
+  return (
+    <>
+      <ButtonContainer>{button}</ButtonContainer>
+      {children}
+    </>
+  );
+}
+
+// Cách 2: Khai báo thẳng property sử dụng chữ cái viết hoa đầu tiên.
+Quan trọng là phải hiểu ta cần dùng chữ cái đầu viết hoa để react hiểu đó là thẻ tùy chỉnh, ko phải là 1 thẻ HTML gốc.
+Vì nếu nó là thẻ HTML thì nó sẽ hiển thị ngay thẻ đó lên trên trình duyệt.
+
+  export default function Tabs({ button, children, ButtonContainer }) {
+  return (
+    <>
+      <ButtonContainer>{button}</ButtonContainer>
+      {children}
+    </>
+  );
+}
+
+
+

@@ -1,0 +1,8 @@
+Portals là 1 tính năng trong React cho phép ta render 1 component, gắn thẳng vào vị trí bất kì trên DOM, 
+vd: ngoài cùng trong <body>
+Cách dùng: import {createPortal} from "react-dom";
+return createPortal(
+    <dialog ref ={dialogInsite} className="result-modal">...
+    </dialog>
+    document.getElementById("modal"); //Nơi muốn gắn vào
+)

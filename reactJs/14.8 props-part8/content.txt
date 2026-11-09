@@ -1,0 +1,9 @@
+-- State cơ bản với React
++ Để sd lại 1 thành phần ta sử dụng useState (State có nghĩa là trạng thái, vd trạng thái dữ liệu thay đổi từ A -> B)
++ Tất cả các tp bắt đầu bằng tiền tố use... được gọi là react Hook
++ Hook bản chất là các hàm tính năng được react thiết kế sẵn.
++ useState nhận 1 giá trị khởi tạo (initState) làm đối số
++ Trả về 1 mảng bao gồm 2 phần tử: giá trị hiện tại của state và 1 hàm để cập nhật state đó.
+const [ state, setState] = useState(initState);
++ Dùng useState thì app được gọi lại
+

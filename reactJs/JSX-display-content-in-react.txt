@@ -1,0 +1,27 @@
+1. JSX dùng chèn biểu thức JS
+2. Không chèn câu lệnh (statement) if(true)....
+3. Kết hợp với điều kiện (toán tử Ternary)
+JSX không hỗ trợ trực tiếp if-else nhưng có thể dùng toán tử ternary (isLogIn ? "Đã đăng nhập" : "Hãy đăng nhập")
+4. Chèn thuộc tính đối tượng
+5. Chèn hình ảnh bằng thẻ img(đặt img trong thư mục assets)
+
+
+---Hiển Thị Nội Dung Theo Điều Kiện Trong React - useState và Ternary
+1. Hiển thị dữ liệu mặc định: 
+Đôi khi ta muốn khi user chưa lựa chọn, sẽ có 1 thông tin mặc định nào đó hiển thị, có 3 cách triển khai:
+vd: click để hiển thị
+
+    1.1 Toán tử 3 ngôi(thay cho if else);
+        Kiểm tra điều kiện biểu thức 1 đúng thì thực hiên biểu thức 2, ngược lại thì thực hiện biểu thức 3
+        let messge = number >= 0 ? "Số dương" : "Số âm"
+
+    1.2 Truthy and Falsy Values
+        Trong JS 1 số giá trị được gọi là "falsy" (giá trị sai), 
+        Những gt này được chuyển đổi thành kiểu Boolean -> giá trị false, ngược lại giá trị truly (đúng)
+            - falsy values gồm: false, 0, -0, 0n(số BigInt),"", null, underfined, NaN(Not-a-Number)
+
+
+
+
+
+

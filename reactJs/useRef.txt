@@ -1,0 +1,29 @@
+- useRef là 1 hook đặc biệt trong React, dùng để tạo ra 1 đối tượng tham chiếu (reference object).
+- useRef() trả về 1 object có property.current (thông qua current ta có thể truy cập được vào mọi method và object của input)
+
+Cách dùng: 
+1. import {useRef} from "react";
+2. khai báo 1 biến dùng useRef(): const playerName = useRef();
+3. Tại phần tử muốn tham chiếu đến dùng 
+vd <input ref={playerName}/>
+React sẽ tự động gán element DOM thực tế vào playerName.curent.
+
+- Toan tu ??
+a ?? b : Nếu a khác null và khác undefined, trả về a, còn lại trả về b;
+vd: let x=null;
+let y = x ?? default; // y= default vi x = null;
+Nếu x ='' //chuỗi rỗng, y vẫn lấy giá trị của x tức = '';
+
+?: kiểm tra tất cả các giá trị falsy.
+??: chỉ kiểm tra null và unddefault.
+
+
+*** Vậy khi nào nên dùng useRef và useState?
+=> useRef có thể truy cập đến đối tượng hiện tại để tham chiếu, 
+Nhanh hơn so với cách dùng của useState, handleChange, value.
+Tuy nhiên useRef ko render lại component -> ta vẫn phải dùng useState để render và quản lý.
+
+
+
+
+

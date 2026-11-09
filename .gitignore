@@ -31,3 +31,15 @@ target/
 src/practices.java
 
 
+
+# Dependencies, generated output and local configuration
+node_modules/
+dist/
+build/
+coverage/
+.DS_Store
+.env
+.env.*
+!.env.example
+!.env.sample
+*.log

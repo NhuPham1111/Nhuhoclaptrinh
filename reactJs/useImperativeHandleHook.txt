@@ -1,0 +1,30 @@
+Vấn đề: khi lv với team, có thể có nhiều người cùng team sẽ ko có nhiều tg để đọc hiểu dự án
+vd: họ tự đổi tên thẻ dialog của bạn, thì rè gọi dialog.showModal() sẽ bị lỗi. ko dùng thẻ dialog mà dùng div, sẽ bị lỗi vì bản thân thẻ div ko tồn tại showModal().
+-- useImpectiveHandle Hook
+* cho phép component con chủ động chỉ định những hàm hoặc thuộc tính nào sẽ được lộ ra ngoài cho component cha truy cập qua ref
+* component cha chỉ gọi được những hàm/ thuộc tính được return trong object của useImpectiveHandle, còn lại hoàn toàn ko truy cập được.
+Tóm lại:
+    - Chỉ những gì được khai báo trong useImpectivehandle mới dùng được từ cha.
+    - Các biến, hàm, DOM khác là private, cha ko truy cập được.
+
+-------------------------------
+Hiện modal khi stop
+- ta cần tính toán thời điểm ngươi chơi bấm dừng, còn cách đích bao lâu? -> suy ra điểm số
+- SettimeOut chạy MỘT LẦN sau một khoảng thời gian 
+    > Chỉ gọi duy nhất một lần sau delay (ms)
+    > Không tự lặp lại
+    > Muốn chạy nhiều lần → phải gọi lại chính nó
+
+    setTimeout(() => {
+    console.log("Run after 2s");
+    }, 2000);
+    
+- setInterval() – chạy LẶP LẠI liên tục
+    > Gọi hàm liên tục lặp lại sau mỗi delay
+    > Cho tới khi bị clearInterval()
+
+    setInterval(() => {
+    console.log("Repeat every 2s");
+    }, 2000);
+
+    

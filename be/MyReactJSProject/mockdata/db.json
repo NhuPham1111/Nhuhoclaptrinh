@@ -1,0 +1,83 @@
+{
+  "vocabs": [
+    {
+      "id": "1",
+      "chinese": "你好",
+      "pinyin": "nǐ hǎo",
+      "meaning": "Xin chào",
+      "categoryId": 1,
+      "notes": "Dùng khi chào hỏi lần đầu"
+    },
+    {
+      "id": "2",
+      "chinese": "谢谢",
+      "pinyin": "xièxie",
+      "meaning": "Cảm ơn",
+      "categoryId": 1,
+      "notes": "Dùng trong giao tiếp hàng ngày"
+    },
+    {
+      "id": "3",
+      "chinese": "学习",
+      "pinyin": "xuéxí",
+      "meaning": "Học tập",
+      "categoryId": 2,
+      "notes": "Dùng cho việc học nói chung",
+      "note": ""
+    },
+    {
+      "id": "c83ec9d6-f587-426c-9de6-0456e03bbfb7",
+      "chinese": "今天",
+      "pinyin": "jintian",
+      "meaning": "Hôm nay",
+      "note": ""
+    },
+    {
+      "id": "d34f6633-a6cf-43e9-874e-e8d93c5b5041",
+      "chinese": "11",
+      "pinyin": "shiyi",
+      "meaning": "11",
+      "note": ""
+    },
+    {
+      "id": "2faa7980-da9b-4f69-82fc-e55da291af17",
+      "chinese": "2",
+      "pinyin": "er",
+      "meaning": "2",
+      "note": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Chào hỏi"
+    },
+    {
+      "id": "2",
+      "name": "Giáo dục"
+    },
+    {
+      "id": "3",
+      "name": "Công nghệ"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "student01",
+      "email": "student01@example.com",
+      "favorites": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "2",
+      "username": "student02",
+      "email": "student02@example.com",
+      "favorites": [
+        2
+      ]
+    }
+  ]
+}

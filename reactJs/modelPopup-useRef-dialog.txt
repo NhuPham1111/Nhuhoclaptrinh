@@ -1,0 +1,22 @@
+dialog mdn
+Co dang nhu sau:
+<dialog open>
+  <p>Greetings, one and all!</p>
+  <form method="dialog">
+    <button>OK</button>
+  </form>
+</dialog>
+
+- Dùng useRef chuyền props từ giao diện component khác vào 
+const dialog = useRef(); // Biến dialog là 1 ref object, có 1 thuộc tính là current
+
+  function handleStart() {
+    timer.current = setTimeout(() => {
+      dialog.current.showModal(); // Dùng hiện dialog khi hết thời gian.
+    }, targetTime * 1000);
+    setTimerStart(true);
+  }
+  
+  - Khi dùng Button trong form của dialog thì nút bấm btn tự động đóng lại.
+
+

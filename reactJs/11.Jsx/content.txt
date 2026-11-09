@@ -1,0 +1,16 @@
+--- 11. JSX
+1. JSX: Javascript syntax extention: cấu trúc mở rộng của JS, cho phép viết code HTML trong JS
+2. Component trong React
+3. Tạo dự án React JS bằng lệnh: npm create vite@latest
+4. <></> Fragment: dùng để bọc các thành phần hiển thị, thay vì dùng <div></div>
+
+---12: Component trong React
+Component thật ra chỉ là 1 hàm JS, tuy nhiên phải tuân theo quy tắc
+1. Tên function phải viết hoa chữ cái đầu
+2. Phải return về giá trị có thể hiển thị được, là 1 phần tử duy nhất
+3. React >< Vannila Javascript
+- Vanilla JavaScript là thuật ngữ dùng để chỉ mã JS được viết mà ko cần bất kỳ thư viện hoặc khuôn khổ bên ngoài nào.
+- React: Dễ đọc, dễ nhìn và ngắn gọn hơn
+
+
+

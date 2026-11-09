@@ -1,0 +1,18 @@
+version: '3.8' # Specify the Docker Compose file format version
+
+services:
+  mysql_db: # Service name for your MySQL container
+    image: mysql # Use the official MySQL 8.0 image
+    container_name: database_nhu_mysql_container # Optional: Assign a custom name to the container
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234 # Set the root password for MySQL
+      MYSQL_DATABASE: database1 # Optional: Create a default database
+      MYSQL_USER: nhuxinh # Optional: Create a default user
+      MYSQL_PASSWORD: 1234 # Optional: Set password for the default user
+    ports:
+      - "3306:3306" # Map host port 3306 to container port 3306
+    volumes:
+      - mysql_data:/var/lib/mysql # Persist data in a named volume
+
+volumes:
+  mysql_data: # Define the named volume for data persistence
