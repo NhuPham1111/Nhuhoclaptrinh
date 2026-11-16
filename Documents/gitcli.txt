@@ -1,0 +1,122 @@
+GIT CLI - CÁC LỆNH THƯỜNG DÙNG
+
+1. CẤU HÌNH VÀ KHỞI TẠO
+git --version                         # Xem phiên bản Git
+git config --global user.name "Ten"    # Đặt tên tác giả commit
+git config --global user.email "email@example.com"
+git config --list                     # Xem cấu hình
+git init                              # Khởi tạo repository trong thư mục hiện tại
+git clone <url>                       # Tải repository về máy
+
+2. KIỂM TRA THAY ĐỔI
+git status                            # Xem nhánh và trạng thái file
+git status -sb                        # Xem trạng thái ngắn gọn
+git diff                              # Xem thay đổi chưa được stage
+git diff --staged                     # Xem thay đổi đã stage, chuẩn bị commit
+git log --oneline -10                 # Xem 10 commit gần nhất
+git log --oneline --graph --all        # Xem lịch sử các nhánh
+git show <commit>                     # Xem nội dung một commit
+
+3. LƯU CODE VÀ ĐẨY LÊN REMOTE
+git add <file>                        # Stage một file
+git add .                             # Stage mọi thay đổi trong thư mục hiện tại
+git commit -m "Mo ta thay doi"         # Tạo commit từ các thay đổi đã stage
+git push                              # Đẩy commit lên nhánh remote đang theo dõi
+git push -u origin <branch>            # Push lần đầu và thiết lập theo dõi
+
+Quy trình thường dùng khi đã ở đúng nhánh:
+git status
+git add .
+git diff --staged
+git commit -m "feat: them chuc nang moi"
+git push
+
+4. TẢI CODE VÀ ĐỒNG BỘ
+git remote -v                         # Xem địa chỉ remote
+git remote add origin <url>           # Thêm remote tên origin
+git fetch origin                      # Tải thông tin mới, chưa cập nhật file đang làm
+git fetch origin --prune              # Đồng thời dọn tham chiếu nhánh remote đã bị xóa
+git pull --ff-only                    # Cập nhật nhánh hiện tại nếu có thể fast-forward
+
+Đồng bộ nhánh main khi working tree sạch:
+git switch main
+git pull --ff-only origin main
+
+Nếu chưa có main ở local nhưng origin/main đã tồn tại:
+git fetch origin
+git switch -c main --track origin/main
+
+Nếu pull --ff-only báo hai nhánh phân kỳ: kiểm tra lịch sử trước khi
+chọn merge hoặc rebase; không dùng force push để xử lý tùy tiện.
+
+5. QUẢN LÝ NHÁNH
+git branch                            # Xem các nhánh local; dấu * là nhánh hiện tại
+git branch -a                         # Xem cả nhánh local và tham chiếu remote
+git branch --show-current             # Xem tên nhánh hiện tại
+git switch <branch>                   # Chuyển sang nhánh đã có
+git switch -c <branch>                # Tạo và chuyển sang nhánh mới
+git branch -m <ten-moi>               # Đổi tên nhánh hiện tại
+git branch -d <branch>                # Xóa nhánh local nếu Git xác nhận đã merge
+git branch -D <branch>                # Ép xóa nhánh local, kể cả chưa merge
+git push origin --delete <branch>     # Xóa nhánh trên remote
+
+Trước khi xóa một nhánh, chuyển sang nhánh khác, ví dụ git switch main.
+Xóa nhánh local không tự xóa nhánh trên GitHub và ngược lại.
+Lệnh -D có thể làm mất tham chiếu tới các commit chưa được lưu ở nơi khác.
+
+Ví dụ tạo nhánh làm tính năng:
+git switch main
+git pull --ff-only
+git switch -c feature/login
+# Sửa code, sau đó add và commit
+git push -u origin feature/login
+
+6. GỘP NHÁNH VÀ XỬ LÝ XUNG ĐỘT
+git switch main
+git merge <branch>                    # Gộp nhánh được chỉ định vào main hiện tại
+
+Nếu có conflict:
+# Mở file bị xung đột, sửa nội dung và xóa các dấu <<<<<<<, =======, >>>>>>>
+git add <file-da-sua>
+git commit                            # Hoàn tất merge
+git merge --abort                     # Hủy merge đang dang dở nếu cần
+
+7. CẤT TẠM THAY ĐỔI
+git stash push -u -m "dang lam"        # Cất thay đổi, gồm cả file chưa được theo dõi
+git stash list                        # Xem các bản cất tạm
+git stash apply                       # Áp dụng bản mới nhất, vẫn giữ trong stash
+git stash pop                         # Áp dụng bản mới nhất và xóa nếu thành công
+
+8. HOÀN TÁC
+git restore --staged <file>            # Bỏ stage, giữ nội dung file đang sửa
+git restore <file>                    # Bỏ thay đổi chưa stage của file (mất phần sửa đó)
+git revert <commit>                   # Tạo commit mới đảo ngược một commit cũ
+git commit --amend --no-edit           # Gộp phần đã stage vào commit gần nhất
+git reflog                            # Xem lịch sử di chuyển HEAD để tìm commit cũ
+
+Chỉ amend commit chưa push, vì amend thay đổi lịch sử commit.
+Ưu tiên revert khi cần hoàn tác commit đã chia sẻ với người khác.
+git reset --hard <commit> có thể xóa thay đổi chưa commit trong file được theo dõi.
+git clean -fd xóa file và thư mục chưa được theo dõi; xem trước bằng git clean -nd.
+Không chạy các lệnh xóa này nếu chưa kiểm tra và sao lưu phần cần giữ.
+
+9. BỎ QUA FILE
+# Thêm tên hoặc mẫu đường dẫn vào .gitignore, ví dụ:
+node_modules/
+.env
+dist/
+
+.gitignore không tự bỏ theo dõi những file đã được commit.
+git rm --cached <file>                # Bỏ theo dõi file nhưng giữ file trên máy
+# Sau đó commit thay đổi và cập nhật .gitignore nếu cần.
+
+10. THUẬT NGỮ NGẮN GỌN
+Working tree: các file đang làm việc trên máy.
+Stage: vùng chọn thay đổi cho commit tiếp theo.
+Commit: một mốc lưu thay đổi trong lịch sử Git.
+Local branch: nhánh trên máy, ví dụ main.
+Remote: repository ở nơi khác, ví dụ GitHub; origin là tên thường dùng.
+origin/main: tham chiếu local ghi nhận trạng thái main trên origin lần fetch gần nhất.
+Upstream: nhánh mà nhánh local theo dõi để pull/push mặc định.
+Detached HEAD: đang đứng trực tiếp tại commit, không ở trên nhánh.
+Nếu muốn tiếp tục lưu công việc từ detached HEAD: git switch -c <ten-nhanh-moi>.

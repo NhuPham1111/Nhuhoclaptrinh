@@ -1,4 +1,4 @@
-public class bai27_array {
+public class bai27_1_array {
     public static void main(String[] args) {
         /*MẢNG: là tập hợp các đối tượng có thể cùng hoặc khác kiểu dữ liệu
         * Kích thước cố đinh ko thể thay đổi
